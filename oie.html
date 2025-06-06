@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pedido</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      color: white;
+      position: relative;
+      background-image: url('vava.jpg'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 105%;
+      width: 105%;
+      background: rgba(255, 0, 0, 0); 
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      top: 15%;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.384);
+    }
+
+    .fade-name {
+      font-size: 28px;
+      color: #fff0f5;
+      animation: fadeInOut 4s infinite;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      25% { opacity: 1; }
+      75% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 10px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background-color: #330000;
+      color: white;
+    }
+
+    #message {
+      margin-top: 40px;
+      font-size: 22px;
+      color: #ffe6ea;
+      padding: 0 20px;
+      text-shadow: 1px 1px 6px black;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ffb6c1;
+      animation: fall 6s linear infinite;
+      font-size: 24px;
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h1>Quer ler oque eu escrevi pra voce? 💖</h1>
+    <div class="fade-name">[vaiolet ou melhor ``MINHA FUTURA ESPOSA``]</div>
+
+    <div class="buttons">
+      <button id="yes">Sim 😍</button>
+      <button id="no">Não 😢</button>
+    </div>
+
+    <div id="message"></div>
+  </div>
+
+  <!-- Música de fundo -->
+  <audio autoplay loop>
+    <source src="vavadedico.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- Emojis de coração -->
+  <script>
+    const btnYes = document.getElementById('yes');
+    const btnNo = document.getElementById('no');
+    const message = document.getElementById('message');
+
+    btnYes.addEventListener('click', () => {
+      const audio = new Audio("vavadedico.mp3");
+audio.play();
+
+      message.innerHTML = `
+        ❤️ Yaaaay! Você disse SIM! ❤️<br><br>
+        Voce e a mulher mais encantadora dessa miNha vida,cada dia que passo a pensar
+        ccomo uma pessoa maravilhosa,linda,gata,inteligente,amorosa,determinada e um mulherao
+        desse consegue sentir algo por min,agradeco voce por ta sempre me motivando a continua firme no meu 
+        dia a dia,via voce apenas como uma amiga mas quando voce veio falar comigo sobre seus sentimentos 
+        fiquei pensativo pois voce era uma amiga muito gentil e desenrolada,ao passar dos dias eu ficava cada vez mais
+        apaixonado em voce,eu era uma pessoa completamente chat,futil,ingnorante e sem animacao para nada,voce
+        e muito importante para min,penso em voce todos os dias e apesar da distancia fique sabendo que existe um
+        idiota que ´´TE AMA´´! 💘💑
+      `;
+    });
+
+    btnNo.addEventListener('click', () => {
+      message.innerHTML = "Tudo bem... 😔.";
+    });
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = ['💖','💕','❤️','💘','💗','💓'][Math.floor(Math.random() * 6)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+      heart.style.animationDuration = (Math.random() * 6 + 8) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createHeart, 200);
+  </script>
+
+</body>
+</html>
